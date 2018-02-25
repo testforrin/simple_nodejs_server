@@ -1,0 +1,14 @@
+{
+  "name": "simple_nodejs_server",
+  "version": "1.0.4",
+  "description": "simple_nodejs_server.js on Docker",
+  "author": "rin <rin.vacancy@1gb.ua>",
+  "main": "simple_nodejs_server.js",
+  "scripts": {
+    "start": "node simple_nodejs_server.js"
+  },
+  "dependencies": {
+    "winston": "^2.4.0"
+  }
+}
+
