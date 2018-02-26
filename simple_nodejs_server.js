@@ -1,13 +1,20 @@
-const counter_fn = 'counter.txt';
+const datadir_name = './data/';
+const counter_fn = datadir_name+'counter.txt';
+const logdir_name = datadir_name+'logs/';
 
 const http = require('http');
 const fs = require('fs');
+if (!fs.existsSync(logdir_name) || !fs.lstatSync(logdir_name).isDirectory())
+{
+	fs.mkdirSync(logdir_name, 0o755);
+}
+
 const winston = require('winston');
 const access_logger = new (winston.Logger)({
 	transports: [
 		new (winston.transports.File)({
 			name: 'access-log',
-			filename: './logs/access.log',
+			filename: logdir_name+'access.log',
 			level: 'info',
 			json: false,
 		}),
@@ -17,7 +24,7 @@ const error_logger = new (winston.Logger)({
 	transports: [
 		new (winston.transports.File)({
 			name: 'error-log',
-			filename: './logs/error.log',
+			filename: logdir_name+'error.log',
 			level: 'error',
 			json: false,
 		}),
